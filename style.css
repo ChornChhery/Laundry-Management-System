@@ -1,0 +1,773 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+:root {
+    --linear-grad: linear-gradient(to right, #141E30, #243B55);
+    --grad-clr1: #141E30;
+    --grad-clr2: #243B55;
+}
+
+body {
+    height: 100vh;
+    background: #ffffff;
+    display: grid;
+    place-content: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+.container {
+    position: relative;
+    width: 1200px;
+    height: 580px;
+    background-color: #ffffff;
+    border-radius: 13px;
+    overflow: hidden;
+    top: 60px;
+}
+
+.form-container {
+    position: absolute;
+    width: 60%;
+    height: 100%;
+    transition: all 0.6s ease-in-out;
+    margin-top: 50px;
+    transform: translateX(-50px);
+}
+
+.sign-up-container {
+    transform: translateX(150px); /* เลื่อนฟอร์มไปทางขวา */
+    opacity: 0;
+    transition: transform 0.6s ease-in-out, opacity 0.6s ease-in-out;
+    margin-left: 48px; /* ปรับค่าตามต้องการ */
+}
+
+.sign-in-container {
+    z-index: 2;
+}
+
+form {
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 180px;
+}
+
+h1 {
+    color: var(--grad-clr1);
+}
+
+span {
+    font-size: 12px;
+}
+
+.infield {
+    position: relative;
+    margin: 8px 0px;
+    width: 100%;
+}
+
+input {
+    width: 100%;
+    padding: 12px 15px;
+    background-color: #f3f3f3;
+    border: none;
+    outline: none;
+}
+
+label {
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    transform: translateX(-50%);
+    width: 0%;
+    height: 2px;
+    background: var(--linear-grad);
+    transition: 0.3s;
+}
+
+input:focus ~ label {
+    width: 100%;
+}
+
+a { 
+    color: #333;
+    font-size: 14px;
+    text-decoration: none;
+    margin: 15px 0px;
+}
+
+a.forgot {
+    padding-bottom: 3px;
+    border-bottom: 2px solid #eee;
+}
+
+button {
+    border-radius: 20px;
+    border: 1px solid var(--grad-clr1);
+    background: var(--grad-clr1);
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 12px 45px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+button.ghost {
+    border-radius: 20px;
+    border: 1px solid var(--grad-clr1);
+    background: var(--grad-clr1);
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 12px 45px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+button.ghost:hover {
+    background: #fff;
+    color: var(--grad-clr2);
+}
+
+.overlay-panel button {
+    border: 1px solid var(--grad-clr1);
+    background-color: var(--grad-clr1);  
+}
+
+button.ghost#signIn {
+    position: relative;
+    top: 180px; /* ปรับค่านี้เพื่อเลื่อนลง */
+    margin-left: -120px;
+}
+
+button.ghost#signUp {
+    position: relative;
+    top: 180px; /* ปรับค่านี้เพื่อเลื่อนลง */
+    margin-left: -120px;
+}
+
+.overlay-panel button.ghost {
+    margin-top: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.overlay-panel button.ghost:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    transition: 0.5s;
+}
+
+.overlay-panel button.ghost:hover:before {
+    left: 100%;
+}
+
+.form-container button {
+    margin-top: 17px;
+    transition: 80ms ease-in;
+}
+
+.form-container button:hover {
+    background: #fff;
+    color: var(--grad-clr1);
+}
+
+.form-container button {
+    margin-top: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.form-container button:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    transition: 0.5s;
+}
+
+.form-container button:hover:before {
+    left: 100%;
+}
+
+.overlay-container {
+    position: absolute;
+    top: 0;
+    left: 60%;
+    width: 40%;
+    height: 100%;
+    overflow: hidden;
+    transition: transform 0.6s ease-in-out;
+    z-index: 9;
+}
+
+#overlayBtn {
+    cursor: pointer;
+    position: absolute;
+    left: 50%;
+    top: 304px;
+    transform: translateX(-50%);
+    width: 50%;
+    height: 40px;
+    border: 1px solid #fff;
+    background: transparent;
+    border-radius: 20px;
+}
+
+.overlay {
+    position: relative;
+    color: #fff;
+    left: -150%;
+    height: 100%;
+    width: 250%;
+    transition: transform 0.6s ease-in-out;
+    
+}
+
+.overlay-panel {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0px 40px;
+    text-align: center;
+    height: 100%;
+    width: 340px;
+    transition: 0.6s ease-in-out;   
+}
+
+.overlay-left {
+    right: 60%;
+    transform: translateX(-12%);
+}
+
+.overlay-right {
+    right: 0;
+    transform: translateX(0);
+}
+
+p {
+    position: absolute;
+    font-size: 14px;
+    font-weight: bold; /* ตัวหนา */
+    line-height: 15px;
+    letter-spacing: 0.5px;
+    margin-top: 220px;
+    margin-left: -120px;
+    color: var(--grad-clr2); /* สีดำ */
+}
+
+.right-panel-active .overlay-container {
+    transform: translateX(-150%);
+}
+
+.right-panel-active .overlay {
+    transform: translateX(50%);
+}
+
+.right-panel-active .overlay-left {
+    transform: translateX(25%);
+}
+
+.right-panel-active .overlay-right {
+    transform: translateX(35%);
+}
+
+.right-panel-active .sign-in-container {
+    transform: translateX(20%);
+    opacity: 0;
+}
+
+.right-panel-active .sign-up-container {
+    transform: translateX(67%); /* รีเซ็ตตำแหน่งเพื่อให้ฟอร์มแสดงที่ตำแหน่งเดิม */
+    opacity: 1;
+    z-index: 5;
+    transition: transform 0.6s ease-in-out, opacity 0.6s ease-in-out;
+}
+
+
+@keyframes show {
+    0%, 50% {
+        opacity: 0;
+        z-index: 1;
+    }
+
+    50.1%, 100% {
+        opacity: 1;
+        z-index: 5;
+    }
+}
+
+.btnScaled {
+    animation: scaleBtn 0.6s;
+}
+
+@keyframes scaleBtn{
+    0% {
+        width: 143.67px;
+    }
+
+    50% {
+        width: 250px;
+    }
+
+    100% {
+        width: 143.67px;
+    }
+}
+
+.logo {
+    position: absolute;
+    width: 500px;
+    height: auto;
+    margin-bottom: 200px;
+    margin-left: -128px; /* เลื่อนโลโก้ไปทางซ้าย */
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120px; /* ปรับความสูงตามต้องการ */
+    background: linear-gradient(to right, #141E30, #243B55);
+    color: white;
+    text-align: center;
+    line-height: 80px; /* จัดให้ข้อความอยู่ตรงกลาง */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    z-index: 1000; /* ให้แทบอยู่บนสุด */
+}
+
+header h2 {
+    font-size: 32px; /* ขยายตัวอักษรให้ใหญ่ขึ้น */
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    z-index: 2;
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* เส้นใต้อักษรแบบแอนิเมชัน */
+header h2::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: white;
+    margin: 10px auto 0;
+    border-radius: 2px;
+    transition: width 0.3s ease-in-out;
+}
+
+header:hover h2::after {
+    width: 120px;
+}
+
+/* เอฟเฟกต์แสงแฟลช */
+header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: skewX(-30deg);
+    transition: left 0.5s ease-in-out;
+}
+
+header:hover::before {
+    left: 100%;
+}
+
+/* แอนิเมชัน Fade In */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.alert {
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+    font-size: 14px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.alert.error {
+    background-color: #ffdddd;
+    color: #d8000c;
+    border: 1px solid #d8000c;
+}
+
+.alert.success {
+    background-color: #ddffdd;
+    color: #4F8A10;
+    border: 1px solid #4F8A10;
+}
+
+/* Add floating animation for the logo */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Apply animations to elements */
+header {
+    animation: welcomeSlide 1s ease-out;
+}
+
+.logo {
+    animation: float 3s ease-in-out infinite;
+}
+
+button {
+    transition: all 0.3s ease;
+}
+
+button:active {
+    animation: buttonPulse 0.3s ease;
+}
+
+/* Responsive Design for Mobile, Tablet, and Desktop */
+
+/* Mobile (up to 767px) */
+@media (max-width: 767px) {
+    body {
+        padding: 140px 10px 20px; /* Space for header */
+    }
+
+    .container {
+        width: 90%;
+        height: 480px; /* Proportional to original 580px */
+        top: 30px;
+        border-radius: 10px;
+    }
+
+    .form-container {
+        width: 60%;
+        margin-top: 40px;
+        transform: translateX(-40px);
+    }
+
+    .sign-in-container,
+    .sign-up-container {
+        width: 60%;
+        padding: 0;
+    }
+
+    .sign-up-container {
+        transform: translateX(120px);
+        margin-left: 40px;
+        opacity: 0; /* Ensure default state matches main style */
+    }
+
+    .right-panel-active .sign-up-container {
+        transform: translateX(60%);
+        opacity: 1;
+    }
+
+    .right-panel-active .sign-in-container {
+        transform: translateX(15%);
+        opacity: 0;
+    }
+
+    .form-container form {
+        height: 400px;
+        padding: 0 100px;
+    }
+
+    h1 {
+        font-size: 26px;
+    }
+
+    span {
+        font-size: 10px;
+    }
+
+    .infield {
+        margin: 6px 0;
+    }
+
+    input {
+        padding: 10px 12px;
+        font-size: 12px;
+    }
+
+    .form-container button {
+        padding: 10px 35px;
+        font-size: 10px;
+    }
+
+    .overlay-container {
+        left: 60%;
+        width: 40%;
+    }
+
+    .overlay {
+        left: -150%;
+        width: 250%;
+    }
+
+    .overlay-panel {
+        width: 280px;
+        padding: 0 30px;
+    }
+
+    .overlay-left {
+        right: 60%;
+        transform: translateX(-10%);
+    }
+
+    .right-panel-active .overlay-container {
+        transform: translateX(-150%);
+    }
+
+    .right-panel-active .overlay {
+        transform: translateX(50%);
+    }
+
+    .right-panel-active .overlay-left {
+        transform: translateX(20%);
+    }
+
+    .right-panel-active .overlay-right {
+        transform: translateX(30%);
+    }
+
+    .logo {
+        width: 400px;
+        margin-bottom: 160px;
+        margin-left: -100px;
+    }
+
+    p {
+        font-size: 12px;
+        margin-top: 180px;
+        margin-left: -100px;
+    }
+
+    button.ghost#signIn,
+    button.ghost#signUp {
+        top: 150px;
+        margin-left: -100px;
+        padding: 10px 35px;
+        font-size: 10px;
+    }
+
+    header {
+        height: 100px;
+    }
+
+    header h2 {
+        font-size: 24px;
+        line-height: 60px;
+    }
+
+    header h2::after {
+        width: 50px;
+    }
+
+    header:hover h2::after {
+        width: 100px;
+    }
+
+    .alert {
+        padding: 12px;
+        font-size: 12px;
+    }
+}
+
+/* Tablet (768px to 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    body {
+        padding: 130px 20px 20px;
+    }
+
+    .container {
+        width: 90%;
+        height: 500px;
+        top: 40px;
+        border-radius: 10px;
+    }
+
+    .form-container {
+        width: 60%;
+        margin-top: 40px;
+        padding: 0 30px;
+        transform: translateX(-45px);
+    }
+
+    .sign-in-container,
+    .sign-up-container {
+        width: 60%;
+        padding: 0;
+        opacity: 1; /* Ensure default visibility */
+    }
+
+    .sign-up-container {
+        transform: translateX(130px);
+        margin-left: 40px;
+        opacity: 0; /* Match main style default state */
+    }
+
+    .right-panel-active .sign-in-container {
+        transform: translateX(18%);
+        opacity: 0;
+    }
+
+    .right-panel-active .sign-up-container {
+        transform: translateX(62%);
+        opacity: 1;
+    }
+
+    .form-container form {
+        height: 420px;
+        padding: 0 140px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    span {
+        font-size: 11px;
+    }
+
+    .infield {
+        margin: 7px 0;
+    }
+
+    input {
+        padding: 11px 13px;
+        font-size: 13px;
+    }
+
+    .form-container button {
+        padding: 11px 40px;
+        font-size: 11px;
+    }
+
+    .overlay-container {
+        left: 60%;
+        width: 40%;
+    }
+
+    .overlay {
+        left: -150%;
+        width: 250%;
+    }
+
+    .overlay-panel {
+        width: 300px;
+        padding: 0 35px;
+    }
+
+    .overlay-left {
+        right: 60%;
+        transform: translateX(-11%);
+    }
+
+    .right-panel-active .overlay-container {
+        transform: translateX(-150%);
+    }
+
+    .right-panel-active .overlay {
+        transform: translateX(50%);
+    }
+
+    .right-panel-active .overlay-left {
+        transform: translateX(22%);
+    }
+
+    .right-panel-active .overlay-right {
+        transform: translateX(32%);
+    }
+
+    .logo {
+        width: 450px;
+        margin-bottom: 180px;
+        margin-left: -110px;
+    }
+
+    p {
+        font-size: 13px;
+        margin-top: 200px;
+        margin-left: -110px;
+    }
+
+    button.ghost#signIn,
+    button.ghost#signUp {
+        top: 160px;
+        margin-left: -110px;
+        padding: 11px 40px;
+        font-size: 11px;
+    }
+
+    header {
+        height: 110px;
+    }
+
+    header h2 {
+        font-size: 28px;
+        line-height: 70px;
+    }
+
+    header h2::after {
+        width: 55px;
+    }
+
+    header:hover h2::after {
+        width: 110px;
+    }
+
+    .alert {
+        padding: 13px;
+        font-size: 13px;
+    }
+}
+
+/* Desktop (1025px and above) */
+@media (max-width: 1025px) {
+    .container {
+        width: 980px;
+        height: 580px;
+        margin-left: -100px;
+    }
+}
